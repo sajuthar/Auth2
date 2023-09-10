@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const connection = require("./db");
-const userRoutes = require("./routes/user");
-const authRoutes = require("./routes/auth");
+const userRoutes = require("../server/routes/user");
+const authRoutes = require("../server/routes/auth");
 
 
 //database conection
