@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const passwordComplexity = require("joi-password-complexity");
 
 const userSchema = new mongoose.Schema({
-    firstName: {
+    name: {
         type:String,
         required:true
     },
@@ -13,8 +13,8 @@ const userSchema = new mongoose.Schema({
         required:true
     },
     mobile : {
-        type:Number,
-        // required:true
+        type:String,
+        required:true
     },
     password : {
         type:String,
@@ -36,10 +36,12 @@ const User = mongoose.model("user",userSchema);
 const validate = (data) => {
     console.log(data);
 	const schema = Joi.object({
-		firstName: Joi.string().required().label("First Name"),
+		name: Joi.string().required().label("Name"),
 		email: Joi.string().email().required().label("Email"),
 		password: passwordComplexity().required().label("Password"),
         confirmPassword: passwordComplexity().required().label("confirmPassword"),
+        mobile: Joi.string().regex(/^(07[1-9]\d{7}|0[1-9][0-9]{8})$/).message("Invalid Sri Lankan mobile number format.").required().label("Mobile Number"),
+    
 	});
 	return schema.validate(data);
 };
