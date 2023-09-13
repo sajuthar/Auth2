@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
 		const validPassword = await bcrypt.compare(
 			req.body.password,
 			user.password
+		
 		);
 		if (!validPassword)
 			return res.status(401).send({ message: "Invalid Email or Password" });
@@ -31,9 +32,10 @@ router.post("/", async (req, res) => {
 
 const validate = (data) => {
 	const schema = Joi.object({
-		firstName: Joi.string().required().label("First Name"),
+		name: Joi.string().label("Name"),
 		email: Joi.string().email().required().label("Email"),
-		password: Joi.string().required().label("Password"),
+		password: Joi.string().label("Password"),
+		// mobile:joi.int().required().label("Mobile Number")
 	});
 	return schema.validate(data);
 };
