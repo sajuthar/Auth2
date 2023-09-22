@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       confirmPassword:req.body.confirmPassword,
     });
 
-    await userser.save();
+    await user.save();
     console.log("User created successfully:", user);
     res.status(200).send({ message: "User created successfully" });
   } catch (error) {
