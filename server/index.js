@@ -6,6 +6,7 @@ const app = express();
 const connection = require("./db");
 const userRoutes = require("../server/routes/user");
 const authRoutes = require("../server/routes/auth");
+const productRoutes = require("../server/routes/product");
 
 
 //database conection
@@ -17,6 +18,8 @@ app.use(cors());
 //routes
 app.use("/api/user",userRoutes);
 app.use("/api/auth",authRoutes);
+
+app.use('/api/products', productRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port,()=>{
