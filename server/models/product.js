@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
   image: String,
   product_name: String,
-  weight: Number,
+  weight: String,
   mnfDate: Date,
   expDate: Date,
   price: Number,
